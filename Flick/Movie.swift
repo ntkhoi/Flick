@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Movie{
     
@@ -23,15 +24,17 @@ class Movie{
     // Desetrolize JSON
     class func getMoviesList(link: URL, callback: @escaping ([[String : AnyObject]]) -> (Void)) {
         var items = [[String : AnyObject]]()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+       
         URLSession.shared.dataTask(with: link) { (data, response, error) in
             if error != nil {
-                
+                showNetworkErrorMessage()
             } else{
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! NSDictionary
                     items = json["results"] as! [[String : AnyObject]]
                 } catch _ {
-                   
+                   showNetworkErrorMessage()
                 }
                  callback(items)
             }
