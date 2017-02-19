@@ -22,7 +22,10 @@ The following **optional** features are implemented:
 * [X] Add a tab bar for Now Playing or Top Rated movies.
 * [X] Implement a UISegmentedControl to switch between a list view and a grid view
 * [X] Add a search bar.
+* [X] For the large poster, load the low-res image first and switch to high-res when complete.
 * [X] All images fade in as they are loading
+* [ ] Customize the highlight and selection effect of the cell. (
+* [ ] Customize the navigation bar.
 
 
 
