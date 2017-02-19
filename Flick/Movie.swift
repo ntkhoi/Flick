@@ -14,11 +14,13 @@ class Movie{
     let title:String
     let overview: String
     let imageUrl: String
+    let imageBigUrl: String
     
-    init(title: String , overview : String , imageUrl : String){
+    init(title: String , overview : String , imageUrl : String, imageBigUrl: String){
         self.title = title
         self.overview = overview
         self.imageUrl = imageUrl
+        self.imageBigUrl = imageBigUrl
     }
     
     
@@ -45,13 +47,15 @@ class Movie{
     
     class func object(at: Int, fromList: Array<[String : AnyObject]>, callback: @escaping ((Movie, Int) -> Void))  {
         let  baseUrl = "https://image.tmdb.org/t/p/w300"
+        let  baseBigUrl = "https://image.tmdb.org/t/p/w300"
 
         DispatchQueue.global(qos: .userInteractive).async(execute: {
             let item = fromList[at]
             let title  = item["title"] as! String
             let overview = item["overview"] as! String
             let imageUrl = "\(baseUrl)\(item["poster_path"] as! String)"
-            let movie = Movie.init(title: title, overview: overview, imageUrl: imageUrl)
+            let imagBigeUrl = "\(baseBigUrl)\(item["poster_path"] as! String)"
+            let movie = Movie.init(title: title, overview: overview, imageUrl: imageUrl , imageBigUrl: imagBigeUrl)
             
             callback(movie, at)
         })

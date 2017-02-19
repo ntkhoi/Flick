@@ -39,6 +39,7 @@ class MovieDetailViewController: UIViewController {
             self.fullImageMovie.image = image
             UIView.animate(withDuration: 1, animations: { () -> Void in
                 self.fullImageMovie.alpha = 1.0
+                self.fullImageMovie.setImageWith(URL(string: (self.movie?.imageBigUrl)!)!)
             })
 
         }, failure: { (imageRequest, imageResponse, error) -> Void in
