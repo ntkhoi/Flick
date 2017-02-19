@@ -8,5 +8,6 @@ target 'Flick' do
 
   pod 'AFNetworking', '~> 3.0'
   pod 'MBProgressHUD'
+  pod 'Toast-Swift', '~> 2.0.0'
 
 end

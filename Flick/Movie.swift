@@ -21,20 +21,20 @@ class Movie{
         self.imageUrl = imageUrl
     }
     
-    // Desetrolize JSON
-    class func getMoviesList(link: URL, callback: @escaping ([[String : AnyObject]]) -> (Void)) {
+    
+    class func getMoviesList(link: URL, callback: @escaping ([[String : AnyObject]]) -> (Void) , callbackError : @escaping(String) -> (Void) ) {
         var items = [[String : AnyObject]]()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
        
         URLSession.shared.dataTask(with: link) { (data, response, error) in
             if error != nil {
-                showNetworkErrorMessage()
+                callbackError((error?.localizedDescription)!)
             } else{
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! NSDictionary
                     items = json["results"] as! [[String : AnyObject]]
                 } catch _ {
-                   showNetworkErrorMessage()
+                   callbackError("Parse Json False")
                 }
                  callback(items)
             }

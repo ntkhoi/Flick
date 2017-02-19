@@ -15,15 +15,18 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - MBProgressHUD (1.0.0)
+  - Toast-Swift (2.0.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - MBProgressHUD
+  - Toast-Swift (~> 2.0.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 9197647c7f670fd6eccf92aba2f10c399aba8f22
+PODFILE CHECKSUM: f10008f2aa5b40f9b95e581e9ab5f95d1710e479
 
 COCOAPODS: 1.2.0

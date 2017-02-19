@@ -25,12 +25,26 @@ class MovieDetailViewController: UIViewController {
         let contentWidth = movieContentScrollView.bounds.width
         let contentHeight = movieContentScrollView.bounds.height + 80
         movieContentScrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
-        fullImageMovie.setImageWith(URL(string: (movie?.imageUrl)!)!)
+        
         titleLable.text = movie?.title
         titleOverview.text = movie?.overview
         titleOverview.sizeToFit()
         
         
+        let imageRequest = URLRequest(url: URL(string: (movie?.imageUrl)!)!)
+        
+        fullImageMovie.setImageWith(imageRequest, placeholderImage: nil, success: { (imageRequest, imageResponse, image) -> Void in
+        
+            self.fullImageMovie.alpha = 0.0
+            self.fullImageMovie.image = image
+            UIView.animate(withDuration: 1, animations: { () -> Void in
+                self.fullImageMovie.alpha = 1.0
+            })
+
+        }, failure: { (imageRequest, imageResponse, error) -> Void in
+        })
+        
     }
-  
+    
+        
 }
